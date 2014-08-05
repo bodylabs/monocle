@@ -1,0 +1,43 @@
+﻿<Window x:Class="Monocle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Monocle"       
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
+        Closing="Window_Closing" 
+        d:DesignHeight="960" d:DesignWidth="1200">
+
+    <Window.Resources>
+        <Storyboard x:Key="FlashAttack">
+            <DoubleAnimation Storyboard.TargetName="flash" Storyboard.TargetProperty="Opacity" From="0" To="0.7" Duration="0:0:0.1" DecelerationRatio="0.8"/>
+        </Storyboard>
+        <Storyboard x:Key="FlashDecay">
+            <DoubleAnimation Storyboard.TargetName="flash" Storyboard.TargetProperty="Opacity" From="0.7" To="0" Duration="0:0:0.2" DecelerationRatio="0.3"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Name="camera" Stretch="Uniform"/>
+        <Canvas Name="canvas" Grid.Row="0" />
+        <Rectangle Name="flash" Fill="White" Opacity="0"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+
+            <Image Name="cameraDummpy" Visibility="Collapsed"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
+                <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
+            </StackPanel>
+            <Label Name="lblCaptureCount"/>
+        </StackPanel>
+        <StackPanel Name="spCamera" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
+
+            <ToggleButton Width="150" Height="30" Name="btnColor" Content="color" Tag="Color" Margin="0,0,0,4" Click="ToggleCamera_Click" IsChecked="True" />
+            <ToggleButton Width="150" Height="30"  Name="btnDepth" Content="depth" Tag="Depth" Margin="0,0,0,4" Click="ToggleCamera_Click"/>
+            <ToggleButton Width="150" Height="30" Name="btnInfrared" Content="infrared" Tag="Infrared" Margin="0,0,0,4" Click="ToggleCamera_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
