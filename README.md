@@ -1,7 +1,7 @@
 Monocle
 =======
 
-A simple data capture app using the Kinect, based on Smithers.
+A simple data capture app using the Kinect, based on [Smithers][].
 
 
 Features
@@ -47,4 +47,5 @@ Monocle uses 7z.dll, which is part of the 7-Zip program, licensed under the
 GNU LGPL license. You can obtain the source code from www.7-zip.org.
 
 
+[smithers]: https://github.com/bodylabs/smithers
 [vstudio]: http://www.microsoft.com/en-us/download/details.aspx?id=40787
