@@ -15,7 +15,11 @@ Features
 Installation
 ------------
 
-To install Monocle, clone the repository and update the submodule.
+1. Install [Visual Studio Express 2013 for Windows Desktop][vstudio].
+2. Install the Kinect SDK.
+3. Clone the repository and update the submodule.
+5. Open anb build the solution. The app will automatically install
+   all the remaining dependencies.
 
 
 Contribute
@@ -41,3 +45,6 @@ Monocle is licensed under the two-clause BSD license.
 
 Monocle uses 7z.dll, which is part of the 7-Zip program, licensed under the
 GNU LGPL license. You can obtain the source code from www.7-zip.org.
+
+
+[vstudio]: http://www.microsoft.com/en-us/download/details.aspx?id=40787
