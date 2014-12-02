@@ -18,7 +18,7 @@ Installation
 1. Install [Visual Studio Express 2013 for Windows Desktop][vstudio].
 2. Install the Kinect SDK.
 3. Clone the repository and update the submodule.
-5. Open anb build the solution. The app will automatically install
+5. Open and build the solution. The app will automatically install
    all the remaining dependencies.
 
 
