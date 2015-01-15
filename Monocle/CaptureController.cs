@@ -30,7 +30,7 @@ namespace Monocle
 
             StartNewSession();
 
-            Console.WriteLine(_session.SessionPath);
+            Console.WriteLine("New session in path: " + _session.SessionPath);
 
             _sessionManager = new SessionManager<Smithers.Sessions.Session<object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem>, object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem>(_session);
 
@@ -41,7 +41,7 @@ namespace Monocle
         {
             // Instead of using a predefined capture program, we add shots on the fly
             _session.AddShot(ShotDefinition.DEFAULT);
-
+            
             _sessionManager.PrepareForNextShot();
 
             _sessionManager.CaptureShot();

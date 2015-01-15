@@ -18,6 +18,9 @@ using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
+using Smithers.Reading.FrameData.Mock;
+using Smithers.Sessions;
+
 namespace Monocle
 {
     /// <summary>
@@ -31,6 +34,11 @@ namespace Monocle
         private ProjectionMode _projectionMode;
         private Storyboard _flashAttack;
         private Storyboard _flashDecay;
+        private KinectSensor _sensor;
+
+        private System.Timers.Timer _timer;
+        private MockLiveFrame _fakeLiveFrame = getFakeLiveFrame();
+        private int timerCount = 0;
 
         public MainWindow()
         {
@@ -39,7 +47,9 @@ namespace Monocle
             _appController = new ApplicationController();
             _captureController = _appController.CaptureController;
 
-            KinectSensor.GetDefault().Open();
+            _sensor = KinectSensor.GetDefault();
+            _sensor.Open();
+
 
             _cameraImagePresenter = new CameraImagePresenter(camera, cameraDummpy);
             _cameraImagePresenter.CameraMode = CameraMode.Color;
@@ -84,6 +94,7 @@ namespace Monocle
             _captureController.SkeletonPresenter.ShowHands = true;
             _captureController.FrameReader.AddResponder(_captureController.SkeletonPresenter);
             _captureController.SkeletonPresenter.ProjectionMode = ProjectionMode.COLOR_IMAGE;
+
             _captureController.SkeletonPresenter.CoordinateMapper = KinectSensor.GetDefault().CoordinateMapper;
             _captureController.SkeletonPresenter.Underlay = camera;
 
@@ -91,18 +102,70 @@ namespace Monocle
 
             _flashAttack = FindResource("FlashAttack") as Storyboard;
             _flashDecay = FindResource("FlashDecay") as Storyboard;
+
+
+            _timer = new System.Timers.Timer(100);
+            
+            _timer.Elapsed += new System.Timers.ElapsedEventHandler(onTimerElapsed);
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("ButtonClick was called");
+            _timer.Enabled = !_timer.Enabled;
+                
+
+            // Can we get data without a real Sensor attached?
+            // No we cannot
+            /*
+            var intrinsics = _sensor.CoordinateMapper.GetDepthCameraIntrinsics();
+            Console.WriteLine("FocalLengthX " + intrinsics.FocalLengthX + "FocalLengthY " + intrinsics.FocalLengthY);
+            Console.WriteLine(intrinsics.PrincipalPointX + " " + intrinsics.PrincipalPointY);
+            var table = _sensor.CoordinateMapper.GetDepthFrameToCameraSpaceTable();
+            foreach (var item in table) 
+            {
+                Console.WriteLine(item.X + " " + item.Y);
+            }
+             
+            */
+
+
+            
             try
             {
                 _captureController.StartCapture();
             }
             catch (InvalidOperationException ex)
             {
+                Console.WriteLine("Exception thrown");
                 MessageBox.Show(ex.Message);
             }
+             
+        }
+
+        private void onTimerElapsed(object source, System.Timers.ElapsedEventArgs e)
+        {
+            Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
+            if (timerCount++ >= 100)
+            {
+                _timer.Enabled = false;
+                return;
+            }
+            this._captureController.SessionManager.FrameArrived(_fakeLiveFrame);
+
+        }
+
+        private static MockLiveFrame getFakeLiveFrame()
+        {
+            MockLiveFrame result = new MockLiveFrame();
+            result.NativeColorFrame = new MockColorFrame();
+            result.NativeDepthFrame = new MockDepthFrame();
+            result.NativeInfraredFrame = new MockInfraredFrame();
+            result.NativeBodyFrame = new MockBodyFrame();
+            result.NativeBodyIndexFrame = new MockBodyIndexFrame();
+            
+            return result;
         }
 
         private void ToggleCamera_Click(object sender, RoutedEventArgs e)
