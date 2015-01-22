@@ -186,7 +186,7 @@ namespace MonocleTest
                             "Did not serialize all Frames");
             Assert.AreEqual(_writableQueue.Count,
                             FRAME_COUNT,
-                            "Not all frames are writable again")
+                            "Not all frames are writable again");
         }
 
         // Test that MemoryManager gets initialized properly
