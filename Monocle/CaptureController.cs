@@ -47,6 +47,14 @@ namespace Monocle
             _sessionManager.CaptureShot();
         }
 
+        public void StartCapture(int nFramesToCapture)
+        {
+            ShotDefinitionVariableFrames newShot = new ShotDefinitionVariableFrames(nFramesToCapture);
+            _session.AddShot(newShot);
+            _sessionManager.PrepareForNextShot();
+            _sessionManager.CaptureShot();
+        }
+
         public void StartNewSession()
         {
             string guid = Guid.NewGuid().ToString();

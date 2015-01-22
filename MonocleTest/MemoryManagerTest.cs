@@ -25,6 +25,7 @@ namespace MonocleTest
         static FrameSerializer _serializer;
         const int FRAME_COUNT = 30;
 
+        // Called once on startup
         [ClassInitialize]
         public static void InitializeClass(TestContext context)
         {
@@ -33,6 +34,7 @@ namespace MonocleTest
             _serializer = new FrameSerializer();
         }
 
+        // Called after every test has run
         [ClassCleanup]
         public static void CleanupClass()
         {
@@ -42,11 +44,13 @@ namespace MonocleTest
             _serializer = null;
         }
 
-
+        // Called before every test method
         [TestInitialize]
         public void InitializeTests()
         {
             _testManager = new MemoryManager(FRAME_COUNT);
+            // We need this private object in order to introspect on the private fields and methods of
+            // the MemoryManager class
             _privateManager = new PrivateObject(_testManager);
             _writableQueue = (Queue<MemoryFrame>)_privateManager
                                                  .GetFieldOrProperty("_writableMemory");
@@ -56,6 +60,7 @@ namespace MonocleTest
                                          .GetFieldOrProperty("_frames");
         }
 
+        // Called after every test method
         [TestCleanup]
         public void CleanupTests()
         {
@@ -66,10 +71,10 @@ namespace MonocleTest
             _frameArray = null;
         }
 
+        // Test that the Writable Queue Count is decremented by one once we ask for a buffer
         [TestMethod]
         public void GetFirstWritableBufferTest()
         {
-            // Test that the Writable Queue Count is decremented by one once we ask for a buffer
             MemoryFrame frame = _testManager.GetWritableBuffer();
 
             Assert.AreEqual(_writableQueue.Count,
@@ -80,10 +85,10 @@ namespace MonocleTest
                                    _frameArray[0]);
         }
 
+        // Test that the frames are given back in FIFO - order
         [TestMethod]
         public void GetAllWritableBuffersTest()
         {
-            // Test that the frames are given back in FIFO - order
             for (int i = 0; i < FRAME_COUNT; ++i)
             {
                 Assert.ReferenceEquals(_testManager.GetWritableBuffer(),
@@ -97,12 +102,11 @@ namespace MonocleTest
             Assert.IsNull(_testManager.GetWritableBuffer());
         }
 
+        // Write Fake Frame to Buffer and check that the buffer contains the fake data
         [TestMethod]
         public void WriteFakeFrameToBufferTest()
         {
             MemoryFrame buffer = _testManager.GetWritableBuffer();
-            
-            // Write fake frame to buffer
             buffer.Update(_fakeKinectData, _serializer);
 
             // We dont serialize the depthmapping data so this should be null
@@ -115,16 +119,15 @@ namespace MonocleTest
             Assert.IsNotNull(buffer.Color);
         }
 
+        // Tests the producer/consumer interaction:
+        // Configuration is as follows:
+        // 30 Buffers
+        // 60 Frames are sent
+        // Frames are produced every 50ms
+        // Serialization takes 100ms
         [TestMethod]
         public void FakeSerializationTest()
         {
-            // Tests the producer/consumer interaction
-            // Configuration is as follows:
-            // 30 Buffers 
-            // 60 Frames are sent
-            // Frames are produced every 50ms 
-            // Serialization takes 100ms
-
             Thread _fakeSerializationThread = new Thread(() =>
                 {
                     while (true)
@@ -183,15 +186,13 @@ namespace MonocleTest
                             "Did not serialize all Frames");
             Assert.AreEqual(_writableQueue.Count,
                             FRAME_COUNT,
-                            "Not all frames are writable again");
-                
+                            "Not all frames are writable again")
         }
 
-
+        // Test that MemoryManager gets initialized properly
         [TestMethod]
         public void InitializationTest()
         {
-            // Test that MemoryManager is initialized properly
             for (int i = 1; i < 20; ++i)
             {
                 using (MemoryManager manager = new MemoryManager(i)) 
@@ -224,8 +225,6 @@ namespace MonocleTest
                                          "Frame Array was not initialized");
                     }
                 }
-
-                
             }
         }
     }

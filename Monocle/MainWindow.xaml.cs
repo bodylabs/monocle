@@ -76,8 +76,8 @@ namespace Monocle
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
             {
-                _flashDecay.Begin();
-                lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
+                //_flashDecay.Begin();
+                // lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
             };
 
             _captureController.SessionManager.ShotSavedError += (sender, e) =>
@@ -133,6 +133,7 @@ namespace Monocle
             if (timerCount++ >= 100)
             {
                 _timer.Enabled = false;
+                timerCount = 0;
                 return;
             }
             this._captureController.SessionManager.FrameArrived(_fakeLiveFrame);
