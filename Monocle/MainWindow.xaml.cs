@@ -37,7 +37,7 @@ namespace Monocle
         private KinectSensor _sensor;
 
         private System.Timers.Timer _timer;
-        private MockLiveFrame _fakeLiveFrame = getFakeLiveFrame();
+        private MockLiveFrame _fakeLiveFrame = MockLiveFrame.GetFakeLiveFrame();
         private int timerCount = 0;
 
         public MainWindow()
@@ -114,23 +114,6 @@ namespace Monocle
         {
             Console.WriteLine("ButtonClick was called");
             _timer.Enabled = !_timer.Enabled;
-                
-
-            // Can we get data without a real Sensor attached?
-            // No we cannot
-            /*
-            var intrinsics = _sensor.CoordinateMapper.GetDepthCameraIntrinsics();
-            Console.WriteLine("FocalLengthX " + intrinsics.FocalLengthX + "FocalLengthY " + intrinsics.FocalLengthY);
-            Console.WriteLine(intrinsics.PrincipalPointX + " " + intrinsics.PrincipalPointY);
-            var table = _sensor.CoordinateMapper.GetDepthFrameToCameraSpaceTable();
-            foreach (var item in table) 
-            {
-                Console.WriteLine(item.X + " " + item.Y);
-            }
-             
-            */
-
-
             
             try
             {
@@ -154,18 +137,6 @@ namespace Monocle
             }
             this._captureController.SessionManager.FrameArrived(_fakeLiveFrame);
 
-        }
-
-        private static MockLiveFrame getFakeLiveFrame()
-        {
-            MockLiveFrame result = new MockLiveFrame();
-            result.NativeColorFrame = new MockColorFrame();
-            result.NativeDepthFrame = new MockDepthFrame();
-            result.NativeInfraredFrame = new MockInfraredFrame();
-            result.NativeBodyFrame = new MockBodyFrame();
-            result.NativeBodyIndexFrame = new MockBodyIndexFrame();
-            
-            return result;
         }
 
         private void ToggleCamera_Click(object sender, RoutedEventArgs e)
