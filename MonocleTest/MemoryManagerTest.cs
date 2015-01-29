@@ -160,6 +160,7 @@ namespace MonocleTest
 
                     while (fakeFramesToSend > 0)
                     {
+                        // TODO: check for null here
                         MemoryFrame frame = _testManager.GetWritableBuffer();
                         
                         // Actual code calls frame.Update(frameData, serializer) here

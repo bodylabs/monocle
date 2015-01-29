@@ -113,8 +113,10 @@ namespace Monocle
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("ButtonClick was called");
-            _timer.Enabled = !_timer.Enabled;
+            if (checkBox.IsChecked == true)
+            {
+                _timer.Enabled = !_timer.Enabled;
+            }
             
             try
             {

@@ -28,6 +28,7 @@
 
             <Image Name="cameraDummpy" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <CheckBox x:Name="checkBox">Send Fake Kinect Data</CheckBox>
                 <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
                 <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
             </StackPanel>
