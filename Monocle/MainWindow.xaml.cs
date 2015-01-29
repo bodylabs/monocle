@@ -77,14 +77,14 @@ namespace Monocle
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
             {
-                /*
+                
                 // TODO: check if this works on the real kinect, it crashes with the fake setup
                 if (checkBox.IsChecked != true)
                 {
                     _flashDecay.Begin();
                     lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
                 }
-                 */
+                 
             };
 
             _captureController.SessionManager.ShotSavedError += (sender, e) =>
