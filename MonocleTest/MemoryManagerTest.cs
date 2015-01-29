@@ -21,7 +21,6 @@ namespace MonocleTest
 
         // Initialized once 
         static MockLiveFrame _fakeKinectData;
-        static MemoryFrame _endFrame;
         static FrameSerializer _serializer;
         const int FRAME_COUNT = 30;
 
@@ -30,7 +29,6 @@ namespace MonocleTest
         public static void InitializeClass(TestContext context)
         {
             _fakeKinectData = MockLiveFrame.GetFakeLiveFrame();
-            _endFrame = new MemoryFrame();
             _serializer = new FrameSerializer();
         }
 
@@ -39,8 +37,6 @@ namespace MonocleTest
         public static void CleanupClass()
         {
             _fakeKinectData = null;
-            _endFrame.Clear();
-            _endFrame = null;
             _serializer = null;
         }
 
@@ -138,7 +134,7 @@ namespace MonocleTest
                             // No work to do
                             Thread.Sleep(30);
                         } 
-                        else if (frameToSerialize == _endFrame)
+                        else if (ReferenceEquals(frameToSerialize, _testManager.EndSerializationFrame))
                         {
                             // All frames have been "serialized"
                             return;
@@ -149,7 +145,7 @@ namespace MonocleTest
                             // Actual code serializes the frame to disk here
                             Thread.Sleep(100);
                             // Free the frame again
-                            _testManager.OnFrameSerialized(frameToSerialize);
+                            _testManager.SetFrameAsWritable(frameToSerialize);
                         }
                     }
                 });
@@ -171,8 +167,8 @@ namespace MonocleTest
                         
                         --fakeFramesToSend;
                     }
-                    
-                    _testManager.EnqueuSerializationTask(_endFrame);
+
+                    _testManager.StopSerialization();
                 });
 
 

@@ -29,6 +29,10 @@
             <Image Name="cameraDummpy" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <CheckBox x:Name="checkBox">Send Fake Kinect Data</CheckBox>
+                <Label>Number Of Memory Frames</Label>
+                <TextBox x:Name="nMemoryFramesText" Width="80">100</TextBox>
+                <Label>Number Of Frames To Capture</Label>
+                <TextBox x:Name="nFramesToCaptureText" Width="80">200</TextBox>
                 <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
                 <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
             </StackPanel>

@@ -47,9 +47,9 @@ namespace Monocle
             _sessionManager.CaptureShot();
         }
 
-        public void StartCapture(int nFramesToCapture)
+        public void StartCapture(int nFramesToCapture, int nMemoryFrames)
         {
-            ShotDefinitionVariableFrames newShot = new ShotDefinitionVariableFrames(nFramesToCapture);
+            ShotDefinitionVariableFrames newShot = new ShotDefinitionVariableFrames(nFramesToCapture, nMemoryFrames);
             _session.AddShot(newShot);
             _sessionManager.PrepareForNextShot();
             _sessionManager.CaptureShot();
