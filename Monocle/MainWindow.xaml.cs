@@ -39,6 +39,7 @@ namespace Monocle
         private System.Timers.Timer _timer;
         private MockLiveFrame _fakeLiveFrame = MockLiveFrame.GetFakeLiveFrame();
         private int timerCount = 0;
+        private int _framesToCapture;
 
         public MainWindow()
         {
@@ -126,6 +127,7 @@ namespace Monocle
             try
             {
                 int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
+                _framesToCapture = nFramesToCapture;
                 int nMemoryFrames = Convert.ToInt32(nMemoryFramesText.Text); 
                 _captureController.StartCapture(nFramesToCapture, nMemoryFrames);
             }
@@ -140,7 +142,7 @@ namespace Monocle
         private void onTimerElapsed(object source, System.Timers.ElapsedEventArgs e)
         {
             Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
-            if (timerCount++ >= 100)
+            if (timerCount++ >= _framesToCapture)
             {
                 _timer.Enabled = false;
                 timerCount = 0;
