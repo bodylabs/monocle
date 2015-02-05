@@ -54,9 +54,10 @@ namespace Monocle
         /// <param name="nMemoryFrames">How many buffers should be used for caching the incoming frames before they are serialized</param>
         /// <param name="nFramesToCapture">Optional parameter: How many frames are supposed to be captured. If not set, the default is -1
         /// and the capture continues until the buffer is full or until the user presses the stop button</param>
-        public void StartCapture(int nMemoryFrames, int nFramesToCapture = -1)
+        /// <param name="serializationFlags">Struct containing information about which data to save to disk</param>
+        public void StartCapture(SerializationFlags serializationFlags, int nMemoryFrames, int nFramesToCapture = -1)
         {
-            ShotDefinitionVariableFrames newShot = new ShotDefinitionVariableFrames(nFramesToCapture, nMemoryFrames);
+            ShotDefinitionVariableFrames newShot = new ShotDefinitionVariableFrames(nFramesToCapture, nMemoryFrames, serializationFlags);
             _session.AddShot(newShot);
             _sessionManager.PrepareForNextShot();
             _sessionManager.CaptureShot();

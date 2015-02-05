@@ -38,9 +38,8 @@ namespace Monocle
 
         private object _lockObject = new object();
 
-        private System.Timers.Timer _timer;
+        private System.Timers.Timer _fakeKinectDataTimer;
         private MockLiveFrame _fakeLiveFrame = MockLiveFrame.GetFakeLiveFrame();
-        private int timerCount = 0;
         private int _framesToCapture;
 
         public MainWindow()
@@ -116,9 +115,12 @@ namespace Monocle
             _flashDecay = FindResource("FlashDecay") as Storyboard;
 
 
-            _timer = new System.Timers.Timer(33);
-            
-            _timer.Elapsed += new System.Timers.ElapsedEventHandler(onTimerElapsed);
+
+            // Timer that fires every 33ms (~30 fps). When the timer fires, the SessionManager receives
+            // a FrameArrived Event just like he would from the real Kinect.
+            // The timer is only enabled if the "Send Fake Kinect Data" Checkbox is toggled.
+            _fakeKinectDataTimer = new System.Timers.Timer(33);
+            _fakeKinectDataTimer.Elapsed += new System.Timers.ElapsedEventHandler(onTimerElapsed);
 
         }
 
@@ -126,9 +128,9 @@ namespace Monocle
         {
             if (checkBox.IsChecked == true)
             {
-                if (!_timer.Enabled)
+                if (!_fakeKinectDataTimer.Enabled)
                 {
-                    _timer.Enabled = true;
+                    _fakeKinectDataTimer.Enabled = true;
                 }
             }
             
@@ -137,7 +139,14 @@ namespace Monocle
                 // int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
                 // _framesToCapture = nFramesToCapture;
                 int nMemoryFrames = Convert.ToInt32(nMemoryFramesText.Text); 
-                _captureController.StartCapture(nMemoryFrames);
+
+                SerializationFlags serializationFlags =
+                    new SerializationFlags(ColorBox.IsChecked == true, 
+                                           DepthBox.IsChecked == true,
+                                           InfraredBox.IsChecked == true,
+                                           SkeletonBox.IsChecked == true,
+                                           DepthMappingBox.IsChecked == true);
+                _captureController.StartCapture(serializationFlags, nMemoryFrames);
             }
             catch (InvalidOperationException ex)
             {

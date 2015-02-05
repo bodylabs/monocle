@@ -9,6 +9,10 @@ using Smithers.Reading.FrameData.Mock;
 
 namespace MonocleTest
 {
+    /// <summary>
+    /// This class tests the new Memory Management and Threading Scheme for the Smithers Application.
+    ///     
+    /// </summary>
     [TestClass]
     public class MemoryManagerTest
     {
