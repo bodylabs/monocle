@@ -35,6 +35,7 @@
                 <TextBox x:Name="nFramesToCaptureText" Width="80">200</TextBox>
                 <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
                 <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
+                <Button Click="Stop_Click" HorizontalAlignment="Stretch">Stop</Button>
             </StackPanel>
             <Label Name="lblCaptureCount"/>
         </StackPanel>

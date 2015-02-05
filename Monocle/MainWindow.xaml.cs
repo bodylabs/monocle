@@ -36,6 +36,8 @@ namespace Monocle
         private Storyboard _flashDecay;
         private KinectSensor _sensor;
 
+        private object _lockObject = new object();
+
         private System.Timers.Timer _timer;
         private MockLiveFrame _fakeLiveFrame = MockLiveFrame.GetFakeLiveFrame();
         private int timerCount = 0;
@@ -77,14 +79,17 @@ namespace Monocle
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
             {
-                
-                // TODO: check if this works on the real kinect, it crashes with the fake setup
-                if (checkBox.IsChecked != true)
+                /*
+                lock (_lockObject)
                 {
-                    _flashDecay.Begin();
-                    lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
+                // TODO: check if this works on the real kinect, it crashes with the fake setup
+                    if (checkBox.IsChecked != true)
+                    {
+                        _flashDecay.Begin();
+                        lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
+                    }
                 }
-                 
+                 * */
             };
 
             _captureController.SessionManager.ShotSavedError += (sender, e) =>
@@ -111,7 +116,7 @@ namespace Monocle
             _flashDecay = FindResource("FlashDecay") as Storyboard;
 
 
-            _timer = new System.Timers.Timer(100);
+            _timer = new System.Timers.Timer(33);
             
             _timer.Elapsed += new System.Timers.ElapsedEventHandler(onTimerElapsed);
 
@@ -121,15 +126,18 @@ namespace Monocle
         {
             if (checkBox.IsChecked == true)
             {
-                _timer.Enabled = !_timer.Enabled;
+                if (!_timer.Enabled)
+                {
+                    _timer.Enabled = true;
+                }
             }
             
             try
             {
-                int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
-                _framesToCapture = nFramesToCapture;
+                // int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
+                // _framesToCapture = nFramesToCapture;
                 int nMemoryFrames = Convert.ToInt32(nMemoryFramesText.Text); 
-                _captureController.StartCapture(nFramesToCapture, nMemoryFrames);
+                _captureController.StartCapture(nMemoryFrames);
             }
             catch (InvalidOperationException ex)
             {
@@ -139,17 +147,15 @@ namespace Monocle
              
         }
 
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            _captureController.StopCapture();
+        }
+
         private void onTimerElapsed(object source, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
-            if (timerCount++ >= _framesToCapture)
-            {
-                _timer.Enabled = false;
-                timerCount = 0;
-                return;
-            }
+           //  Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
             this._captureController.SessionManager.FrameArrived(_fakeLiveFrame);
-
         }
 
         private void ToggleCamera_Click(object sender, RoutedEventArgs e)

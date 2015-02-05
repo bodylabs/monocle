@@ -47,12 +47,25 @@ namespace Monocle
             _sessionManager.CaptureShot();
         }
 
-        public void StartCapture(int nFramesToCapture, int nMemoryFrames)
+        /// <summary>
+        /// This function starts a new capture with the specified number of buffers available.
+        /// A new Shot (with the specified shot definition) will be added to the Sessions List of Shots 
+        /// </summary>
+        /// <param name="nMemoryFrames">How many buffers should be used for caching the incoming frames before they are serialized</param>
+        /// <param name="nFramesToCapture">Optional parameter: How many frames are supposed to be captured. If not set, the default is -1
+        /// and the capture continues until the buffer is full or until the user presses the stop button</param>
+        public void StartCapture(int nMemoryFrames, int nFramesToCapture = -1)
         {
             ShotDefinitionVariableFrames newShot = new ShotDefinitionVariableFrames(nFramesToCapture, nMemoryFrames);
             _session.AddShot(newShot);
             _sessionManager.PrepareForNextShot();
             _sessionManager.CaptureShot();
+        }
+
+
+        public void StopCapture()
+        {
+            _sessionManager.StopCapture();
         }
 
         public void StartNewSession()
