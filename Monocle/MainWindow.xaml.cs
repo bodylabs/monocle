@@ -78,7 +78,6 @@ namespace Monocle
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
             {
-                /*
                 lock (_lockObject)
                 {
                 // TODO: check if this works on the real kinect, it crashes with the fake setup
@@ -88,7 +87,6 @@ namespace Monocle
                         lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
                     }
                 }
-                 * */
             };
 
             _captureController.SessionManager.ShotSavedError += (sender, e) =>
@@ -136,8 +134,8 @@ namespace Monocle
             
             try
             {
-                // int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
-                // _framesToCapture = nFramesToCapture;
+                int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
+                _framesToCapture = nFramesToCapture;
                 int nMemoryFrames = Convert.ToInt32(nMemoryFramesText.Text); 
 
                 SerializationFlags serializationFlags =
@@ -146,12 +144,21 @@ namespace Monocle
                                            InfraredBox.IsChecked == true,
                                            SkeletonBox.IsChecked == true,
                                            DepthMappingBox.IsChecked == true);
-                _captureController.StartCapture(serializationFlags, nMemoryFrames);
+                _captureController.StartCapture(serializationFlags, nMemoryFrames, nFramesToCapture);
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Exception thrown");
-                MessageBox.Show(ex.Message);
+                // Catch those Exceptions we know can happen
+                if (ex is FormatException || ex is ArgumentException || ex is ArgumentOutOfRangeException ||
+                    ex is OverflowException || ex is InvalidOperationException)
+                {
+                    Console.WriteLine("Exception thrown");
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
+                // Other type of Exception, so rethrow it
+                throw;
             }
              
         }

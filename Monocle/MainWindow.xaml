@@ -28,11 +28,6 @@
 
             <Image Name="cameraDummpy" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <CheckBox x:Name="checkBox">Send Fake Kinect Data</CheckBox>
-                <Label>Number Of Memory Frames</Label>
-                <TextBox x:Name="nMemoryFramesText" Width="80">100</TextBox>
-                <Label>Number Of Frames To Capture</Label>
-                <TextBox x:Name="nFramesToCaptureText" Width="80">200</TextBox>
                 <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
                 <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
                 <Button Click="Stop_Click" HorizontalAlignment="Stretch">Stop</Button>
@@ -40,18 +35,29 @@
             <Label Name="lblCaptureCount"/>
         </StackPanel>
         <StackPanel Name="spCamera" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
-
             <ToggleButton Width="150" Height="30" Name="btnColor" Content="color" Tag="Color" Margin="0,0,0,4" Click="ToggleCamera_Click" IsChecked="True" />
             <ToggleButton Width="150" Height="30"  Name="btnDepth" Content="depth" Tag="Depth" Margin="0,0,0,4" Click="ToggleCamera_Click"/>
             <ToggleButton Width="150" Height="30" Name="btnInfrared" Content="infrared" Tag="Infrared" Margin="0,0,0,4" Click="ToggleCamera_Click" />
-            <StackPanel Name="captureTypes">
-                <Label>Chose data to save</Label>
-                <CheckBox x:Name="ColorBox"  IsChecked="True">Color</CheckBox>
-                <CheckBox x:Name="DepthBox" IsChecked="True">Depth</CheckBox>
-                <CheckBox x:Name="InfraredBox" IsChecked="True">Infrared</CheckBox>
-                <CheckBox x:Name="SkeletonBox" IsChecked="True">Skeleton</CheckBox>
-                <CheckBox x:Name="DepthMappingBox">DepthMapping</CheckBox>
-            </StackPanel>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <StackPanel Name="captureTypes" >
+                    <Label>Chose data to save</Label>
+                    <CheckBox x:Name="ColorBox"  IsChecked="True">Color</CheckBox>
+                    <CheckBox x:Name="DepthBox" IsChecked="True">Depth</CheckBox>
+                    <CheckBox x:Name="InfraredBox" IsChecked="True">Infrared</CheckBox>
+                    <CheckBox x:Name="SkeletonBox" IsChecked="True">Skeleton</CheckBox>
+                    <CheckBox x:Name="DepthMappingBox">DepthMapping</CheckBox>
+                    <Separator></Separator>
+                    <Label>Capture Options</Label>
+                    <Label ToolTip="How many Buffers are used to cache the incoming frames before serializing">
+                        Number Of Buffers</Label>
+                    <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left">100</TextBox>
+                    <Label ToolTip="Set to 0 if you want to control the end of the capture yourself" >
+                        Number Of Frames To Capture</Label>
+                    <TextBox x:Name="nFramesToCaptureText" Width="80" HorizontalAlignment="Left">0</TextBox>
+                    <Label></Label>
+                    <CheckBox x:Name="checkBox">Send Fake Kinect Data</CheckBox>
+                </StackPanel>
+        </Border>
         </StackPanel>
     </Grid>
 </Window>
