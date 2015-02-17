@@ -28,11 +28,9 @@
 
             <Image Name="cameraDummpy" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
-                <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
-                <Button Click="Stop_Click" HorizontalAlignment="Stretch">Stop</Button>
+                <Label Name="lblCaptureCount"/>
             </StackPanel>
-            <Label Name="lblCaptureCount"/>
+            
         </StackPanel>
         <StackPanel Name="spCamera" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
             <ToggleButton Width="150" Height="30" Name="btnColor" Content="color" Tag="Color" Margin="0,0,0,4" Click="ToggleCamera_Click" IsChecked="True" />
@@ -58,6 +56,9 @@
                     <CheckBox x:Name="checkBox">Send Fake Kinect Data</CheckBox>
                 </StackPanel>
         </Border>
+            <Button Click="Button_Click" HorizontalAlignment="Stretch">Capture</Button>
+            <Button Click="Compress_Click" HorizontalAlignment="Stretch">Compress</Button>
+            <Button Click="Stop_Click" HorizontalAlignment="Stretch">Stop</Button>
         </StackPanel>
     </Grid>
 </Window>
