@@ -37,7 +37,7 @@
             <ToggleButton Width="150" Height="30"  Name="btnDepth" Content="depth" Tag="Depth" Margin="0,0,0,4" Click="ToggleCamera_Click"/>
             <ToggleButton Width="150" Height="30" Name="btnInfrared" Content="infrared" Tag="Infrared" Margin="0,0,0,4" Click="ToggleCamera_Click" />
             <Border BorderThickness="1" BorderBrush="Black">
-                <StackPanel Name="captureTypes" >
+                <StackPanel Background="White" Name="captureTypes" >
                     <Label>Chose data to save</Label>
                     <CheckBox x:Name="ColorBox"  IsChecked="True">Color</CheckBox>
                     <CheckBox x:Name="DepthBox" IsChecked="True">Depth</CheckBox>

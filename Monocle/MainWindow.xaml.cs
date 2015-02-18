@@ -18,7 +18,6 @@ using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
-using Smithers.Reading.FrameData.Mock;
 using Smithers.Sessions;
 
 namespace Monocle
@@ -38,8 +37,6 @@ namespace Monocle
 
         private object _lockObject = new object();
 
-        private System.Timers.Timer _fakeKinectDataTimer;
-        private MockLiveFrame _fakeLiveFrame = MockLiveFrame.GetFakeLiveFrame();
         private int _framesToCapture;
 
         public MainWindow()
@@ -113,25 +110,10 @@ namespace Monocle
             _flashDecay = FindResource("FlashDecay") as Storyboard;
 
 
-
-            // Timer that fires every 33ms (~30 fps). When the timer fires, the SessionManager receives
-            // a FrameArrived Event just like he would from the real Kinect.
-            // The timer is only enabled if the "Send Fake Kinect Data" Checkbox is toggled.
-            _fakeKinectDataTimer = new System.Timers.Timer(33);
-            _fakeKinectDataTimer.Elapsed += new System.Timers.ElapsedEventHandler(onTimerElapsed);
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBox.IsChecked == true)
-            {
-                if (!_fakeKinectDataTimer.Enabled)
-                {
-                    _fakeKinectDataTimer.Enabled = true;
-                }
-            }
-            
             try
             {
                 int nFramesToCapture = Convert.ToInt32(nFramesToCaptureText.Text);
@@ -168,11 +150,6 @@ namespace Monocle
             _captureController.StopCapture();
         }
 
-        private void onTimerElapsed(object source, System.Timers.ElapsedEventArgs e)
-        {
-           //  Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
-            this._captureController.SessionManager.FrameArrived(_fakeLiveFrame);
-        }
 
         private void ToggleCamera_Click(object sender, RoutedEventArgs e)
         {
