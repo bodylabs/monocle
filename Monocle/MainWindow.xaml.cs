@@ -36,7 +36,6 @@ namespace Monocle
         private KinectSensor _sensor;
 
         private object _lockObject = new object();
-
         private int _framesToCapture;
 
         public MainWindow()
@@ -52,34 +51,36 @@ namespace Monocle
 
             _cameraImagePresenter = new CameraImagePresenter(camera, cameraDummpy);
             _cameraImagePresenter.CameraMode = CameraMode.Color;
-            _cameraImagePresenter.Enabled = true;
+            _cameraImagePresenter.SparseUpdate = false;
             //camera.Source = _captureController.ColorBitmap.Bitmap;
 
             _captureController.SessionManager.ShotBeginning += (sender, e) =>
             {
                 _flashAttack.Begin();
-                _cameraImagePresenter.Enabled = false;
+                _cameraImagePresenter.SparseUpdate = true;
+                captureControlPanel.IsEnabled = false;
+                captureButton.IsEnabled = false;
             };
 
             _captureController.SessionManager.ShotCompletedSuccess += (sender, e) =>
             {
-                _cameraImagePresenter.Enabled = true;
+                _cameraImagePresenter.SparseUpdate = false;
+                captureControlPanel.IsEnabled = true;
+                captureButton.IsEnabled = true;
             };
 
             _captureController.SessionManager.ShotCompletedError += (sender, e) =>
             {
                 _flashDecay.Begin();
                 MessageBox.Show(e.ErrorMessage);
-                _cameraImagePresenter.Enabled = true;
+                _cameraImagePresenter.SparseUpdate = false;
+                captureButton.IsEnabled = true;
             };
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
             {
-                lock (_lockObject)
-                {
-                    _flashDecay.Begin();
-                    lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
-                }
+                _flashDecay.Begin();
+                lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
             };
 
             _captureController.SessionManager.ShotSavedError += (sender, e) =>
@@ -94,13 +95,11 @@ namespace Monocle
             _captureController.SessionManager.updateGUI += (sender, e) =>
             {
                 // NOTE: This has to be invoked from the Main Thread or you get an access violation
-                //  I don´t know why the other events do not seem to need this.
+                //       I don´t know why the other events do not seem to need this.
                 this.Dispatcher.Invoke((Action)(() =>
                 {
-                    Console.WriteLine("updating GUI");
                     averageFPSLabel.Content = e.AverageFPS.ToString();
                     minFPSLabel.Content = e.MinFPS.ToString();
-                    Console.WriteLine("Updated GUI");
                 }));
                 
             };
