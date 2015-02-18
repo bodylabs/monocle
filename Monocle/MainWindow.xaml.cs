@@ -98,8 +98,8 @@ namespace Monocle
                 //       I don´t know why the other events do not seem to need this.
                 this.Dispatcher.Invoke((Action)(() =>
                 {
-                    averageFPSLabel.Content = e.AverageFPS.ToString();
-                    minFPSLabel.Content = e.MinFPS.ToString();
+                    averageFPSLabel.Content = String.Format("{0:0.#}", e.AverageFPS);
+                    minFPSLabel.Content = String.Format("{0:0.#}", e.MinFPS);
                 }));
                 
             };

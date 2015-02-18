@@ -30,9 +30,9 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Label>CaptureCount</Label>
                 <Label Name="lblCaptureCount"/>
-                <Label>Average FPS</Label>
+                <Label ToolTip="Shows the average frames per second during capture (taken over an interval of 2 seconds)">Average FPS</Label>
                 <Label Name="averageFPSLabel"/>
-                <Label>Min FPS</Label>
+                <Label ToolTip="Shows the minimum framerate in the current interval" >Min FPS</Label>
                 <Label Name="minFPSLabel"/>
             </StackPanel>
             
