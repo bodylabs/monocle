@@ -33,7 +33,7 @@
                 <Label>Average FPS</Label>
                 <Label Name="averageFPSLabel"/>
                 <Label>Min FPS</Label>
-                <Label Name="MinFPSLabel"/>
+                <Label Name="minFPSLabel"/>
             </StackPanel>
             
         </StackPanel>

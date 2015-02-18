@@ -91,6 +91,20 @@ namespace Monocle
                     MessageBox.Show(e.ErrorMessage + ": " + e.Exception.Message);
             };
 
+            _captureController.SessionManager.updateGUI += (sender, e) =>
+            {
+                // NOTE: This has to be invoked from the Main Thread or you get an access violation
+                //  I don´t know why the other events do not seem to need this.
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    Console.WriteLine("updating GUI");
+                    averageFPSLabel.Content = e.AverageFPS.ToString();
+                    minFPSLabel.Content = e.MinFPS.ToString();
+                    Console.WriteLine("Updated GUI");
+                }));
+                
+            };
+
             _captureController.SkeletonPresenter = new SkeletonPresenter(canvas);
             _captureController.SkeletonPresenter.ShowBody = true;
             _captureController.SkeletonPresenter.ShowHands = true;
