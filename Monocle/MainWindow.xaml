@@ -34,6 +34,8 @@
                 <Label Name="averageFPSLabel"/>
                 <Label ToolTip="Shows the minimum framerate in the current interval" >Min FPS</Label>
                 <Label Name="minFPSLabel"/>
+                <Label ToolTip="Shots the maximum time in milliseconds it took to cache the frame data">MaxTimeDelta</Label>
+                <Label Name="maxTimeDeltaLabel"/>
             </StackPanel>
             
         </StackPanel>

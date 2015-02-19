@@ -103,6 +103,7 @@ namespace Monocle
                 {
                     averageFPSLabel.Content = String.Format("{0:0.#}", e.AverageFPS);
                     minFPSLabel.Content = String.Format("{0:0.#}", e.MinFPS);
+                    maxTimeDeltaLabel.Content = String.Format("{0:0.#}", e.MaxTimeDeleta);
                 }));
                 
             };
