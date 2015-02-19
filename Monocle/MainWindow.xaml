@@ -28,7 +28,7 @@
 
             <Image Name="cameraDummpy" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Label>CaptureCount</Label>
+                <Label>ShotCount</Label>
                 <Label Name="lblCaptureCount"/>
                 <Label ToolTip="Shows the average frames per second during capture (taken over an interval of 2 seconds)">Average FPS</Label>
                 <Label Name="averageFPSLabel"/>
@@ -53,7 +53,7 @@
                     <Label>Capture Options</Label>
                     <Label ToolTip="How many Buffers are used to cache the incoming frames before serializing">
                         Number Of Buffers</Label>
-                    <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left">100</TextBox>
+                    <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left">200</TextBox>
                     <Label ToolTip="Set to 0 if you want to control the end of the capture yourself" >
                         Number Of Frames To Capture</Label>
                     <TextBox x:Name="nFramesToCaptureText" Width="80" HorizontalAlignment="Left">0</TextBox>

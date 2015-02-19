@@ -60,6 +60,7 @@ namespace Monocle
                 _cameraImagePresenter.SparseUpdate = true;
                 captureControlPanel.IsEnabled = false;
                 captureButton.IsEnabled = false;
+                compressButton.IsEnabled = false;
             };
 
             _captureController.SessionManager.ShotCompletedSuccess += (sender, e) =>
@@ -67,6 +68,7 @@ namespace Monocle
                 _cameraImagePresenter.SparseUpdate = false;
                 captureControlPanel.IsEnabled = true;
                 captureButton.IsEnabled = true;
+                compressButton.IsEnabled = true;
             };
 
             _captureController.SessionManager.ShotCompletedError += (sender, e) =>
@@ -75,6 +77,7 @@ namespace Monocle
                 MessageBox.Show(e.ErrorMessage);
                 _cameraImagePresenter.SparseUpdate = false;
                 captureButton.IsEnabled = true;
+                compressButton.IsEnabled = true;
             };
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
