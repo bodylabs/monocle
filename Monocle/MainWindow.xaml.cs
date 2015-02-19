@@ -52,6 +52,7 @@ namespace Monocle
             _cameraImagePresenter = new CameraImagePresenter(camera, cameraDummpy);
             _cameraImagePresenter.CameraMode = CameraMode.Color;
             _cameraImagePresenter.SparseUpdate = false;
+            compressButton.IsEnabled = false;
             //camera.Source = _captureController.ColorBitmap.Bitmap;
 
             _captureController.SessionManager.ShotBeginning += (sender, e) =>
@@ -108,6 +109,9 @@ namespace Monocle
                 
             };
 
+
+            // TODO: reenable skeleton presenter
+            /*
             _captureController.SkeletonPresenter = new SkeletonPresenter(canvas);
             _captureController.SkeletonPresenter.ShowBody = true;
             _captureController.SkeletonPresenter.ShowHands = true;
@@ -116,6 +120,7 @@ namespace Monocle
 
             _captureController.SkeletonPresenter.CoordinateMapper = KinectSensor.GetDefault().CoordinateMapper;
             _captureController.SkeletonPresenter.Underlay = camera;
+             * */
 
             _captureController.FrameReader.AddResponder(_cameraImagePresenter);
 
