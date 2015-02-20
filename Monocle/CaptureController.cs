@@ -18,6 +18,7 @@ namespace Monocle
         string _baseDirectory;
         Session<object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem> _session;
         
+        
         SessionManager<Session<object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem>, object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem> _sessionManager;
 
         public FrameReader FrameReader { get { return _reader; } }
@@ -32,7 +33,15 @@ namespace Monocle
 
             Console.WriteLine("New session in path: " + _session.SessionPath);
 
-            _sessionManager = new SessionManager<Smithers.Sessions.Session<object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem>, object, Shot<ShotDefinition, SavedItem>, ShotDefinition, SavedItem>(_session);
+            _sessionManager = new SessionManager<
+                                    Smithers.Sessions.Session<object, 
+                                                              Shot<ShotDefinition, SavedItem>, 
+                                                              ShotDefinition, 
+                                                              SavedItem>, 
+                                    object, 
+                                    Shot<ShotDefinition, SavedItem>, 
+                                    ShotDefinition, 
+                                    SavedItem>(_session);
 
             _sessionManager.AttachToReader(_reader);
         }
@@ -67,6 +76,11 @@ namespace Monocle
         public void StopCapture()
         {
             _sessionManager.StopCapture();
+        }
+
+        public void SetBufferSize(Int64 size)
+        {
+          _sessionManager.SetBufferSize(size);
         }
 
         public void StartNewSession()
