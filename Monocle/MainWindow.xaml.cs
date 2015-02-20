@@ -111,7 +111,7 @@ namespace Monocle
 
 
             // TODO: reenable skeleton presenter
-            /*
+            
             _captureController.SkeletonPresenter = new SkeletonPresenter(canvas);
             _captureController.SkeletonPresenter.ShowBody = true;
             _captureController.SkeletonPresenter.ShowHands = true;
@@ -120,7 +120,7 @@ namespace Monocle
 
             _captureController.SkeletonPresenter.CoordinateMapper = KinectSensor.GetDefault().CoordinateMapper;
             _captureController.SkeletonPresenter.Underlay = camera;
-             * */
+          
 
             _captureController.FrameReader.AddResponder(_cameraImagePresenter);
 
