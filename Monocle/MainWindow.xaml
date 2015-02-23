@@ -67,7 +67,7 @@
                 </StackPanel>
         </Border>
             <Button Click="Button_Click" HorizontalAlignment="Stretch" Name="captureButton">Capture</Button>
-            <Button Click="Compress_Click" HorizontalAlignment="Stretch" Name="compressButton">Compress</Button>
+            <Button Click="Compress_Click" HorizontalAlignment="Stretch" Name="compressButton" IsEnabled="False">Compress</Button>
             <Button Click="Stop_Click" HorizontalAlignment="Stretch" Name="stopButton">Stop</Button>
         </StackPanel>
     </Grid>

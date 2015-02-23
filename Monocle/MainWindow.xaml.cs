@@ -83,7 +83,7 @@ namespace Monocle
                 _cameraImagePresenter.SparseUpdate = false;
                 captureControlPanel.IsEnabled = true;
                 captureButton.IsEnabled = true;
-                compressButton.IsEnabled = true;
+                compressButton.IsEnabled = false;
               }));
             };
 
@@ -95,7 +95,7 @@ namespace Monocle
                 MessageBox.Show(e.ErrorMessage);
                 _cameraImagePresenter.SparseUpdate = false;
                 captureButton.IsEnabled = true;
-                compressButton.IsEnabled = true;
+                compressButton.IsEnabled = false;// true;
               }));
             };
 
