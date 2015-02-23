@@ -19,6 +19,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
 using Smithers.Sessions;
+using System.Threading;
 
 namespace Monocle
 {
@@ -37,6 +38,13 @@ namespace Monocle
 
         private object _lockObject = new object();
         private int _framesToCapture;
+
+
+        /// <summary>
+        /// Fired when the size of the buffer is changed
+        /// </summary>
+        public event EventHandler<Int64> changeMemoryManagerCapacity;
+
 
         public MainWindow()
         {
@@ -57,43 +65,61 @@ namespace Monocle
 
             _captureController.SessionManager.ShotBeginning += (sender, e) =>
             {
+              this.Dispatcher.Invoke((Action)(() =>
+              {
+
                 _flashAttack.Begin();
                 _cameraImagePresenter.SparseUpdate = true;
                 captureControlPanel.IsEnabled = false;
                 captureButton.IsEnabled = false;
                 compressButton.IsEnabled = false;
+              }));
             };
 
             _captureController.SessionManager.ShotCompletedSuccess += (sender, e) =>
             {
+              this.Dispatcher.Invoke((Action)(() =>
+              {
                 _cameraImagePresenter.SparseUpdate = false;
                 captureControlPanel.IsEnabled = true;
                 captureButton.IsEnabled = true;
-                compressButton.IsEnabled = true;
+                compressButton.IsEnabled = false;
+              }));
             };
 
             _captureController.SessionManager.ShotCompletedError += (sender, e) =>
             {
+              this.Dispatcher.Invoke((Action)(() =>
+              {
                 _flashDecay.Begin();
                 MessageBox.Show(e.ErrorMessage);
                 _cameraImagePresenter.SparseUpdate = false;
                 captureButton.IsEnabled = true;
-                compressButton.IsEnabled = true;
+                compressButton.IsEnabled = false;// true;
+              }));
             };
 
             _captureController.SessionManager.ShotSavedSuccess += (sender, e) =>
             {
+              this.Dispatcher.Invoke((Action)(() =>
+              {
+
                 _flashDecay.Begin();
                 lblCaptureCount.Content = _captureController.Session.Shots.Where(x => x.Completed).Count();
+              }));
             };
 
             _captureController.SessionManager.ShotSavedError += (sender, e) =>
             {
+              this.Dispatcher.Invoke((Action)(() =>
+              {
+
                 _flashDecay.Begin();
                 if (e.Exception == null)
-                    MessageBox.Show(e.ErrorMessage);
+                  MessageBox.Show(e.ErrorMessage);
                 else
-                    MessageBox.Show(e.ErrorMessage + ": " + e.Exception.Message);
+                  MessageBox.Show(e.ErrorMessage + ": " + e.Exception.Message);
+              }));
             };
 
             _captureController.SessionManager.updateGUI += (sender, e) =>
@@ -105,13 +131,13 @@ namespace Monocle
                     averageFPSLabel.Content = String.Format("{0:0.#}", e.AverageFPS);
                     minFPSLabel.Content = String.Format("{0:0.#}", e.MinFPS);
                     maxTimeDeltaLabel.Content = String.Format("{0:0.#}", e.MaxTimeDeleta);
+                    percentage_buffer.Content = String.Format("{0:0.00}", e.PercentageBuffer);
+                    capture_status.Content = String.Format("{0:0.00}", e.Blabla);
+                    
                 }));
                 
             };
 
-
-            // TODO: reenable skeleton presenter
-            
             _captureController.SkeletonPresenter = new SkeletonPresenter(canvas);
             _captureController.SkeletonPresenter.ShowBody = true;
             _captureController.SkeletonPresenter.ShowHands = true;
@@ -163,9 +189,11 @@ namespace Monocle
              
         }
 
+      
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            _captureController.StopCapture();
+          new Thread(() => { _captureController.StopCapture(); }).Start();
+          
         }
 
 
@@ -206,6 +234,23 @@ namespace Monocle
                 lblCaptureCount.Content = "Compressed successfully";
             else
                 lblCaptureCount.Content = string.Format("Archive failed: {0}", result.Exception.Message);
+        }
+
+        private void nMemoryFramesText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+          if (_captureController == null)
+            return;
+
+          int nMemoryFrames = Convert.ToInt32(nMemoryFramesText.Text); 
+          // not doing errors
+          if(nMemoryFrames > 10000)
+          {
+            return;
+          }
+
+          _captureController.SetBufferSize(nMemoryFrames);
+
+
         }
 
     }

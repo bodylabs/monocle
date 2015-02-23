@@ -30,12 +30,16 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Label>ShotCount</Label>
                 <Label Name="lblCaptureCount"/>
-                <Label ToolTip="Shows the average frames per second during capture (taken over an interval of 2 seconds)">Average FPS</Label>
+                <Label ToolTip="Shows the average frames per second during capture (taken over an interval of 2 seconds)">Average FPS:</Label>
                 <Label Name="averageFPSLabel"/>
-                <Label ToolTip="Shows the minimum framerate in the current interval" >Min FPS</Label>
+                <Label ToolTip="Shows the minimum framerate in the current interval" >Min FPS:</Label>
                 <Label Name="minFPSLabel"/>
                 <Label ToolTip="Shots the maximum time in milliseconds it took to cache the frame data">MaxTimeDelta</Label>
                 <Label Name="maxTimeDeltaLabel"/>
+                <Label ToolTip="Occupation of the buffer">% buffer:</Label>
+                <Label Name="percentage_buffer"/>
+                <Label ToolTip="Current capture status" Content="status:"/>
+                <Label Name="capture_status"/>
             </StackPanel>
             
         </StackPanel>
@@ -55,7 +59,7 @@
                     <Label>Capture Options</Label>
                     <Label ToolTip="How many Buffers are used to cache the incoming frames before serializing">
                         Number Of Buffers</Label>
-                    <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left">200</TextBox>
+                    <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left" TextChanged="nMemoryFramesText_TextChanged">200</TextBox>
                     <Label ToolTip="Set to 0 if you want to control the end of the capture yourself" >
                         Number Of Frames To Capture</Label>
                     <TextBox x:Name="nFramesToCaptureText" Width="80" HorizontalAlignment="Left">0</TextBox>
@@ -63,7 +67,7 @@
                 </StackPanel>
         </Border>
             <Button Click="Button_Click" HorizontalAlignment="Stretch" Name="captureButton">Capture</Button>
-            <Button Click="Compress_Click" HorizontalAlignment="Stretch" Name="compressButton">Compress</Button>
+            <Button Click="Compress_Click" HorizontalAlignment="Stretch" Name="compressButton" IsEnabled="False">Compress</Button>
             <Button Click="Stop_Click" HorizontalAlignment="Stretch" Name="stopButton">Stop</Button>
         </StackPanel>
     </Grid>
