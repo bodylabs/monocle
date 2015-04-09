@@ -27,6 +27,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1EDFFA1351798AAEDAF999057426536F"
+        "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1EDFFA1351798AAEDAF999057426536F"
+        "OwnerKey" = "8:_89784A44B619810255FDCA102044AD2E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -75,24 +87,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_99E142DB155AC2F3EB9701596EA5D08A"
-        "OwnerKey" = "8:_89784A44B619810255FDCA102044AD2E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_99E142DB155AC2F3EB9701596EA5D08A"
-        "OwnerKey" = "8:_11B31932893C65A32170B9C218ADF01A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_99E142DB155AC2F3EB9701596EA5D08A"
-        "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9DC96020B252454DA922AB3658D93594"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -112,6 +106,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A3237FBB25ACB0DC78187186EFC28A2A"
+        "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A3237FBB25ACB0DC78187186EFC28A2A"
         "OwnerKey" = "8:_8F5806E8649B1CD5E0CFC013B5C90891"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -135,8 +135,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A3237FBB25ACB0DC78187186EFC28A2A"
+        "MsmKey" = "8:_A517D799F16571DE1AB3C0DD523CDE93"
         "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A517D799F16571DE1AB3C0DD523CDE93"
+        "OwnerKey" = "8:_89784A44B619810255FDCA102044AD2E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A517D799F16571DE1AB3C0DD523CDE93"
+        "OwnerKey" = "8:_11B31932893C65A32170B9C218ADF01A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -147,20 +159,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EF8BB4FE6A1C3D2C34973AE6184D1F42"
-        "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EF8BB4FE6A1C3D2C34973AE6184D1F42"
-        "OwnerKey" = "8:_89784A44B619810255FDCA102044AD2E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C8F29131E0F44AF1CB3623E3B57C1767"
+        "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,7 +178,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1EDFFA1351798AAEDAF999057426536F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_11B31932893C65A32170B9C218ADF01A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A517D799F16571DE1AB3C0DD523CDE93"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,13 +202,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6D40245396524DE5ACFF105E627D6D33"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EF8BB4FE6A1C3D2C34973AE6184D1F42"
+        "OwnerKey" = "8:_A3237FBB25ACB0DC78187186EFC28A2A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,13 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_99E142DB155AC2F3EB9701596EA5D08A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A3237FBB25ACB0DC78187186EFC28A2A"
+        "OwnerKey" = "8:_C8F29131E0F44AF1CB3623E3B57C1767"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -326,6 +326,37 @@
                     }
                 }
             "SourcePath" = "8:Smithers.Serialization.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7E28876C250845D188A29E4AC49247BD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1EDFFA1351798AAEDAF999057426536F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1EDFFA1351798AAEDAF999057426536F"
+                    {
+                    "Name" = "8:SevenZipSharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SevenZipSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7E28876C250845D188A29E4AC49247BD"
@@ -456,37 +487,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_99E142DB155AC2F3EB9701596EA5D08A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_99E142DB155AC2F3EB9701596EA5D08A"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7E28876C250845D188A29E4AC49247BD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9DC96020B252454DA922AB3658D93594"
             {
             "SourcePath" = "8:..\\Monocle\\app.ico"
@@ -569,20 +569,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C8F29131E0F44AF1CB3623E3B57C1767"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A517D799F16571DE1AB3C0DD523CDE93"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C8F29131E0F44AF1CB3623E3B57C1767"
+                    "_A517D799F16571DE1AB3C0DD523CDE93"
                     {
-                    "Name" = "8:System.IO.Compression.dll"
+                    "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.IO.Compression.dll"
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7E28876C250845D188A29E4AC49247BD"
@@ -600,20 +600,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF8BB4FE6A1C3D2C34973AE6184D1F42"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C8F29131E0F44AF1CB3623E3B57C1767"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EF8BB4FE6A1C3D2C34973AE6184D1F42"
+                    "_C8F29131E0F44AF1CB3623E3B57C1767"
                     {
-                    "Name" = "8:SevenZipSharp.dll"
+                    "Name" = "8:System.IO.Compression.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:SevenZipSharp.dll"
+            "SourcePath" = "8:System.IO.Compression.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7E28876C250845D188A29E4AC49247BD"
@@ -688,7 +688,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Monocle setup"
         "ProductCode" = "8:{A4583DAF-89F6-4EE7-9EC2-A8F766975C62}"
-        "PackageCode" = "8:{57DD4B10-3B80-4327-B919-EAB575AE9E2C}"
+        "PackageCode" = "8:{16F14183-1910-4335-BB95-DBE54061A357}"
         "UpgradeCode" = "8:{1F768823-0567-496F-8C19-3EF9C268AE3D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -696,12 +696,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Body Labs & Max Planck Institute for Intelligent Systems"
+        "Manufacturer" = "8:Body Labs & Max Planck Society"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Monocle setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Body Labs & Max Planck Institute for Intelligent Systems"
+        "ARPCONTACT" = "8:Body Labs & Max Planck Society"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Kinect sequence capture application"
         "ARPURLINFOABOUT" = "8:"
