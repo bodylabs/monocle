@@ -57,9 +57,8 @@
                     <CheckBox x:Name="DepthMappingBox">DepthMapping</CheckBox>
                     <Separator></Separator>
                     <Label>Capture Options</Label>
-                    <Label ToolTip="How many Buffers are used to cache the incoming frames before serializing">
-                        Number Of Buffers</Label>
-                    <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left" TextChanged="nMemoryFramesText_TextChanged">200</TextBox>
+          <Label ToolTip="How many Buffers are used to cache the incoming frames before serializing" Content="Buffer size"/>
+          <TextBox x:Name="nMemoryFramesText" Width="80" HorizontalAlignment="Left" TextChanged="nMemoryFramesText_TextChanged">200</TextBox>
                     <Label ToolTip="Set to 0 if you want to control the end of the capture yourself" >
                         Number Of Frames To Capture</Label>
                     <TextBox x:Name="nFramesToCaptureText" Width="80" HorizontalAlignment="Left">0</TextBox>
