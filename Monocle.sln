@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smithers.Visualization", "v
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monocle", "Monocle\Monocle.csproj", "{5C756068-3A18-4EC1-ADED-BC0814197C58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonocleTest", "MonocleTest\MonocleTest.csproj", "{C3F7B9E3-080D-44EF-9B84-038C51864EBF}"
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupMonocle", "SetupMonocle\SetupMonocle.vdproj", "{7ACAD181-7C73-46D3-B7B5-9FA56BA5482E}"
 EndProject
 Global
@@ -65,12 +63,6 @@ Global
 		{5C756068-3A18-4EC1-ADED-BC0814197C58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C756068-3A18-4EC1-ADED-BC0814197C58}.Release|x64.ActiveCfg = Release|x64
 		{5C756068-3A18-4EC1-ADED-BC0814197C58}.Release|x64.Build.0 = Release|x64
-		{C3F7B9E3-080D-44EF-9B84-038C51864EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3F7B9E3-080D-44EF-9B84-038C51864EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3F7B9E3-080D-44EF-9B84-038C51864EBF}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C3F7B9E3-080D-44EF-9B84-038C51864EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3F7B9E3-080D-44EF-9B84-038C51864EBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3F7B9E3-080D-44EF-9B84-038C51864EBF}.Release|x64.ActiveCfg = Release|Any CPU
 		{7ACAD181-7C73-46D3-B7B5-9FA56BA5482E}.Debug|Any CPU.ActiveCfg = Debug
 		{7ACAD181-7C73-46D3-B7B5-9FA56BA5482E}.Debug|x64.ActiveCfg = Debug
 		{7ACAD181-7C73-46D3-B7B5-9FA56BA5482E}.Release|Any CPU.ActiveCfg = Release
