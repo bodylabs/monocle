@@ -1,7 +1,7 @@
 Monocle
 =======
 
-A simple data capture app using the Kinect, based on [Smithers][].
+A simple data capture app using the Kinect, based on [Smithers][smithers].
 
 
 Features
@@ -15,10 +15,11 @@ Features
 Installation
 ------------
 
-1. Install [Visual Studio Express 2013 for Windows Desktop][vstudio].
-2. Install the Kinect SDK.
-3. Clone the repository and update the submodule.
-5. Open anb build the solution. The app will automatically install
+1. Install [Visual Studio Express 2013 Community Edition][vstudio].
+2. Install the [Visual Studio Installer Projects Extension][setuppackage].
+3. Install the Kinect SDK.
+4. Clone the repository and update the submodule.
+5. Open and build the solution. The app will automatically install
    all the remaining dependencies.
 
 
@@ -48,4 +49,5 @@ GNU LGPL license. You can obtain the source code from www.7-zip.org.
 
 
 [smithers]: https://github.com/bodylabs/smithers
-[vstudio]: http://www.microsoft.com/en-us/download/details.aspx?id=40787
+[vstudio]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
+[setuppackage]: http://blogs.msdn.com/b/visualstudio/archive/2014/04/17/visual-studio-installer-projects-extension.aspx
