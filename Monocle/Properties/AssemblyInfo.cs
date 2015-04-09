@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Monocle")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett-Packard Company")]
+[assembly: AssemblyCompany("Body Labs")]
 [assembly: AssemblyProduct("Monocle")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard Company 2014")]
+[assembly: AssemblyCopyright("Copyright © Body Labs & Max Planck Society")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
